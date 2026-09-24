@@ -16,7 +16,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); // 본인의 EmailJS 퍼블릭 키 입력
+            emailjs.init("_Xq9oPmKqsKlUbFq3"); // 퍼블릭 키 적용 완료
         })();
     </script>
 
@@ -175,7 +175,7 @@
         }
 
         .about-text {
-            font-family: 'Cinzel', serif; /* 드래그된 부분의 폰트를 제목과 동일한 Cinzel 감성으로 통일 */
+            font-family: 'Cinzel', serif;
             font-size: clamp(1.1rem, 2vw, 1.5rem);
             line-height: 1.8;
             letter-spacing: 2px;
@@ -245,11 +245,10 @@
             letter-spacing: 8px;
             font-weight: 700;
             cursor: pointer;
-            list-style: none; /* 기본 삼각형 제거 */
+            list-style: none;
             transition: background 0.3s, color 0.3s;
         }
 
-        /* 웹킷 브라우저 기본 화살표 숨기기 */
         .section-toggle-header::-webkit-details-marker {
             display: none;
         }
@@ -334,7 +333,7 @@
         }
 
         /* ------------------------------------------------
-           ACCORDION SECTION (예약 가능 디자인 내부 아이템 - HTML details 사용)
+           ACCORDION SECTION
            ------------------------------------------------ */
         .accordion-container {
             max-width: 900px;
@@ -457,7 +456,7 @@
         }
 
         /* ------------------------------------------------
-           AFTERCARE SECTION (타투 관리법)
+           AFTERCARE SECTION
            ------------------------------------------------ */
         .aftercare-grid {
             display: grid;
@@ -585,7 +584,7 @@
         }
 
         /* ------------------------------------------------
-           MODALS (알림창 & 라이트박스)
+           MODALS
            ------------------------------------------------ */
         .modal {
             display: none;
@@ -738,7 +737,7 @@
         </div>
     </section>
 
-    <!-- 대단원 접이식 섹션 1: AVAILABLE DESIGNS (HTML details 활용) -->
+    <!-- 대단원 접이식 섹션 1: AVAILABLE DESIGNS -->
     <div class="collapsible-section-wrapper reveal">
         <details class="collapsible-details">
             <summary class="section-toggle-header">
@@ -748,7 +747,6 @@
             <div class="collapsible-inner">
                 <div class="accordion-container">
                     
-                    <!-- 디자인 아이템 1 -->
                     <details class="accordion-details">
                         <summary class="accordion-header">
                             <span data-i18n="design1Title">01. THE FALLEN JESTER</span>
@@ -764,7 +762,6 @@
                         </div>
                     </details>
 
-                    <!-- 디자인 아이템 2 -->
                     <details class="accordion-details">
                         <summary class="accordion-header">
                             <span data-i18n="design2Title">02. SILENT TEAR</span>
@@ -780,7 +777,6 @@
                         </div>
                     </details>
 
-                    <!-- 디자인 아이템 3 -->
                     <details class="accordion-details">
                         <summary class="accordion-header">
                             <span data-i18n="design3Title">03. CHASM OF SHADOW</span>
@@ -801,7 +797,7 @@
         </details>
     </div>
 
-    <!-- 대단원 접이식 섹션 2: AFTERCARE (타투 관리법) -->
+    <!-- 대단원 접이식 섹션 2: AFTERCARE -->
     <div class="collapsible-section-wrapper reveal">
         <details class="collapsible-details">
             <summary class="section-toggle-header">
@@ -869,7 +865,6 @@
     </footer>
 
     <script>
-        // --- 다국어 번역 데이터 ---
         const translations = {
             en: {
                 heroTitle: "FORM / SHADOW",
@@ -995,7 +990,6 @@
             document.getElementById('inputMessage').placeholder = translations[lang].messagePlaceholder;
         }
 
-        // --- '이 디자인으로 예약하기' 클릭 시 문의 폼에 자동 입력 기능 ---
         function selectDesign(designName) {
             const messageInput = document.getElementById('inputMessage');
             messageInput.value = `[Design Inquiry] ${designName} 예약 문의합니다.\n희망 부위: \n특이사항: `;
@@ -1027,14 +1021,14 @@
             document.getElementById('lightboxModal').style.display = 'none';
         }
 
-        // --- EmailJS 실제 연동 스크립트 ---
+        // --- EmailJS 실제 연동 스크립트 (Service ID & Template ID 반영 완료) ---
         const form = document.getElementById('inquiryForm');
         const successModal = document.getElementById('successModal');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            emailjs.sendForm('service_c90yz2a', 'template_y1fnc1u', this)
                 .then(function() {
                     successModal.style.display = 'flex';
                     form.reset();
